@@ -22,14 +22,20 @@ bool hasDelivery;
 Restaurant makeRestaurantFromConsole();
 void printRestaurant(const Restaurant& r);
 
+
 void printRestaurant (const Restaurant& r){
-cout << "-----\n";
+cout << "---------------\n";
 cout << r.name << " " << r.cuisine << "\n";
+cout << r.address << "\n";
+cout << "Rating: " << fixed << setprecision(1) << r.rating << "5.0 \n";
+cout << "Price: " << string(r.priceLevel, '$') << "\n";
+cout << "Delivery: " << (r.hasDelivery ? "Yes" : "No") << "\n";
 };
 
 
 
 int main(){
-    cout << "\nIT'S HAPPENING...\n";
-};
+     Restaurant demo{"Cafe Atlas", "123 Main St", "Mediterranean", 4.6, 2, true};
+    printRestaurant(demo);
 
+};
