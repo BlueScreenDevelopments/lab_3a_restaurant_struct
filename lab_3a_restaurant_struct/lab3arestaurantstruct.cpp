@@ -23,6 +23,22 @@ Restaurant makeRestaurantFromConsole();
 void printRestaurant(const Restaurant& r);
 
 
+/*Receive Input */
+Restaurant makeRestaurantFromConsole(){
+    Restaurant r;
+
+    cout << "Name: ";
+    getline (cin, r.name);
+
+    cout << "Address: ";
+    getline (cin, r.address);
+
+    cout << "Cusine: ";
+    getline(cin, r.cuisine);
+
+}
+
+/*Output Console*/
 void printRestaurant (const Restaurant& r){
 cout << "---------------\n";
 cout << r.name << " " << r.cuisine << "\n";
@@ -33,7 +49,7 @@ cout << "Delivery: " << (r.hasDelivery ? "Yes" : "No") << "\n";
 };
 
 
-
+/*Testing Grounds */
 int main(){
      Restaurant demo{"Cafe Atlas", "123 Main St", "Mediterranean", 4.6, 2, true};
     printRestaurant(demo);
