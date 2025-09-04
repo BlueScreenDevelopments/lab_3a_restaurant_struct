@@ -1,5 +1,4 @@
 #include <iostream>
-
 using namespace std;
 
 /*
@@ -10,9 +9,20 @@ Restaurant Struct
 
 */
 
+
 int main(){
     cout << "IT'S HAPPENING...\n";
-
-
-    
 };
+
+struct Restaurant{
+string name;
+string address;
+string cusine;
+double rating;
+int priceLevel;
+bool hasDelivery
+};
+
+
+
+
