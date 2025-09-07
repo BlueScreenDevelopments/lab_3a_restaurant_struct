@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <limits>
+#include <vector>
 using namespace std;
 
 /*
@@ -55,7 +56,7 @@ Restaurant makeRestaurantFromConsole(){
 
      cin.ignore(numeric_limits<streamsize>::max(), '\n'); //running into errors, flush newline
 
-    cout << "Has Delivery? (1 = yes, 2 = no): ";
+    cout << "Has Delivery? (1 = yes, 0 = no): ";
     int deliveryInt;
     while (!(cin >> deliveryInt) || (deliveryInt != 0 && deliveryInt !=1)) {
         cin.clear();
@@ -64,15 +65,14 @@ Restaurant makeRestaurantFromConsole(){
     }
 
     r.hasDelivery = (deliveryInt ==1);
-
     cin.ignore(numeric_limits<streamsize>::max(), '\n'); //eating the trailing newline just in case
     return r;
 }
 
 /*Output Console*/
 void printRestaurant (const Restaurant& r){
-cout << "---------------\n";
-cout << r.name << " " << r.cuisine << "\n";
+cout << "\n----------------------------------------------\n";
+cout << r.name << " -- " << r.cuisine << " Cuisine \n";
 cout << r.address << "\n";
 cout << "Rating: " << fixed << setprecision(1) << r.rating << " / 5.0 \n";
 cout << "Price: " << string(r.priceLevel, '$') << "\n";
@@ -82,8 +82,24 @@ cout << "Delivery: " << (r.hasDelivery ? "Yes" : "No") << "\n";
 
 /*Testing Grounds */
 int main() {
-    cout << "Enter a restaurant:\n";
-    Restaurant r = makeRestaurantFromConsole();
-    cout << "\nYou entered:\n";
-    printRestaurant(r);
+    vector<Restaurant> places;
+
+
+    //Two Restaurants Inputs from Consoles ----
+    cout << "Enter restaurant 1:\n";
+    places.push_back(makeRestaurantFromConsole());
+
+    cout << "Enter restaurant 2:\n";
+    places.push_back(makeRestaurantFromConsole());
+
+
+    // Two more hard-coded objects.
+    places.push_back(Restaurant{"Noodle Hub", "77 Oak Ave", "Thai", 4.2, 1, true});
+    places.push_back(Restaurant{"Prime Cut", "9 Market Sq", "Steakhouse", 4.8, 4, false});
+
+    cout << "\n=== All Restaurants ===\n";
+    for (const auto& r : places) {
+        printRestaurant(r);
+    }
+
 }
