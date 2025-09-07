@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <limits>
 using namespace std;
 
 /*
@@ -36,6 +37,30 @@ Restaurant makeRestaurantFromConsole(){
     cout << "Cusine: ";
     getline(cin, r.cuisine);
 
+    cout << "Rating (0-5): ";
+    while (!(cin, r.rating) || r.rating < 0.0 || r.rating > 5.0){
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Enter a number 0-5: ";
+    }
+
+    cout << "Price level (1-4): ";
+    while (!(cin >> r.priceLevel) || r.priceLevel < 1 || r.priceLevel > 4){
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Enter a number 0-5: ";
+    }
+    cout << "Has Delivery? (1 = yes, 2 = no): ";
+    int deliveryInt;
+    while (!(cin >> deliveryInt) || (deliveryInt != 0 && deliveryInt !=1)) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Enter 1 or 0: ";
+    }
+
+    r.hasDelivery = (deliveryInt ==1);
+
+    
 }
 
 /*Output Console*/
